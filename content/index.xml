@@ -6,6 +6,18 @@
       <description>最近的10条笔记 on 🐧 Blog</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2025-01-23</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-01-23</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-01-23</guid>
+    <description>基本数据类型 算术类型，void 为了支持分离式编译，C++语言将声明和定义区分开来。声明（declaration）使得名字为程序所知，一个文件如果想使用别处定义的名字则必须包含对那个名字的声明。而定义（definition）负责创建与名字关联的实体。 变量声明规定了变量的类型和名字，在这一点上定义与之相同。但是除此之外，定义还申请存储空间，也可能会为变量赋一个初始值。 ...</description>
+    <pubDate>Thu, 23 Jan 2025 07:21:58 GMT</pubDate>
+  </item><item>
+    <title>2025-01-10</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-01-10</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-01-10</guid>
+    <description>编译工具链 Assembling a Complete Toolchain — Clang 20.0.0git documentation LLVM每日谈之四十一 组装一个完整的工具链 从这个翻译摘录了一些内容 语法/语义分析的产物pch/preamble/pcm -precompile但是实际上好像得是--precompile ...</description>
+    <pubDate>Fri, 10 Jan 2025 11:01:49 GMT</pubDate>
+  </item><item>
     <title>2024-12-29</title>
     <link>https://swingurm.github.io/quartz/Daily/2024-12-29</link>
     <guid>https://swingurm.github.io/quartz/Daily/2024-12-29</guid>
@@ -30,6 +42,12 @@
     <description>std::uint8_t一般是unsigned char的别名，打印std::uint8_t*时会以C字符串(char*)的方式打印，unexpected &lt;bit&gt;提供了对unsigned的位运算支持。 Hacker’s Delight float加减法，只在数值倍数相差不超过1.6e7时有效 C字符串在cpp中类型是const ...</description>
     <pubDate>Mon, 23 Dec 2024 08:49:25 GMT</pubDate>
   </item><item>
+    <title>2024-12-21</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-12-21</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-12-21</guid>
+    <description>research.swtch.com/hwmm 顺序一致性 要求遵守这一一致性的处理器的 任意一种实际执行 都满足等价于 所有处理器按照一个全局顺序执行，并且每个处理器中的操作按照其程序指定的顺序出现在该序列 共享内存可以一次服务一个线程的读取或写入请求 Litmus Test 测试模型是否允许特定的执行。结果只有两种，可能或不可能 ...</description>
+    <pubDate>Sat, 21 Dec 2024 12:16:16 GMT</pubDate>
+  </item><item>
     <title>2024-12-10</title>
     <link>https://swingurm.github.io/quartz/Daily/2024-12-10</link>
     <guid>https://swingurm.github.io/quartz/Daily/2024-12-10</guid>
@@ -47,24 +65,6 @@
     <guid>https://swingurm.github.io/quartz/libc</guid>
     <description>C标准历史 K&amp;R C 并没有标准化的早期 之后的标准化的版本都属于ISO C或者Standard C系列 ANSI C一般等同于C89 C95,C99,C11… C标准库头文件 POSIX POSIX 是标准 C 库的超集，并且 POSIX 在某些方面会参考 C 标准库。如果 C 标准库和 POSIX 之间存在冲突，则以 C 标准库为准。 ...</description>
     <pubDate>Fri, 29 Nov 2024 05:17:31 GMT</pubDate>
-  </item><item>
-    <title>2024-11-24</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-11-24</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-11-24</guid>
-    <description>rust中比起C，将更多语法作为表达式处理，如if unit type 一种只包含一个实例的类型 rust中用来表示返回值为void empty type 无实例的类型 rust中用来表示不返回 变长类型 这里的变长的理解应该是编译期不能确定，运行期确定后不能改变 如[T]和str 不定长u8串，UTF-8编码 一般以引用形式出现 ...</description>
-    <pubDate>Sun, 24 Nov 2024 08:32:12 GMT</pubDate>
-  </item><item>
-    <title>2024-11-13</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-11-13</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-11-13</guid>
-    <description>信号 由内核向进程发出，或者由其他进程发出等 异步的操作系统机制 除零会触发exception，也会使得内核发出SIGFPE这个信号 多个同时发出的信号可能只会触发一次处理程序，处理程序需要考虑这种情况 defer sigprocmask()允许进程忽视信号，即暂时屏蔽信号的处理，并不会忽略或丢弃信号 通过阻止异步事件的处理，创建了一个临界区，保证了临界区和信号处理程序不会形成竞争 ...</description>
-    <pubDate>Wed, 13 Nov 2024 14:01:39 GMT</pubDate>
-  </item><item>
-    <title>2024-11-12</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-11-12</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-11-12</guid>
-    <description>引用 四种引用类型各自能绑定的值类别 注意避免发生悬垂引用 避免间接引用临时对象，这样不会再有延长生命周期的作用，导致引用悬垂 临时对象的声明周期到所在整个表达式的结尾，如果有初始化器，会存活到初始化器结束 T&amp;&amp; ref = std::move(T{}) result&amp;&amp; s1 = std::move(process(1)); ...</description>
-    <pubDate>Tue, 12 Nov 2024 03:08:52 GMT</pubDate>
   </item>
     </channel>
   </rss>
