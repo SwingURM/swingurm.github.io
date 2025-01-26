@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh"><head><title>CMU 15-445</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Noto Serif Simplified Chinese:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🐧 Blog"/><meta property="og:title" content="CMU 15-445"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="CMU 15-445"/><meta name="twitter:description" content="data model 关系，K/V，图等等 schema entity和他们的attribute relational algebra是procedure的 SQL windows function为每一行计算一个新值？ 可以用来得到行号，排名rank mmap 让OS负责内存和外存的页交换 不建议 DBMS管理一系列的page作为存储单元 ..."/><meta property="og:description" content="data model 关系，K/V，图等等 schema entity和他们的attribute relational algebra是procedure的 SQL windows function为每一行计算一个新值？ 可以用来得到行号，排名rank mmap 让OS负责内存和外存的页交换 不建议 DBMS管理一系列的page作为存储单元 ..."/><meta property="og:image:type" content="image/webp"/><meta property="og:image:alt" content="data model 关系，K/V，图等等 schema entity和他们的attribute relational algebra是procedure的 SQL windows function为每一行计算一个新值？ 可以用来得到行号，排名rank mmap 让OS负责内存和外存的页交换 不建议 DBMS管理一系列的page作为存储单元 ..."/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:url" content="https://swingurm.github.io/quartz/static/og-image.png"/><meta name="twitter:image" content="https://swingurm.github.io/quartz/static/og-image.png"/><meta property="og:image" content="https://swingurm.github.io/quartz/static/og-image.png"/><meta property="twitter:domain" content="swingurm.github.io/quartz"/><meta property="og:url" content="https://swingurm.github.io/quartz/CMU-15-445"/><meta property="twitter:url" content="https://swingurm.github.io/quartz/CMU-15-445"/><link rel="icon" href="./static/icon.png"/><meta name="description" content="data model 关系，K/V，图等等 schema entity和他们的attribute relational algebra是procedure的 SQL windows function为每一行计算一个新值？ 可以用来得到行号，排名rank mmap 让OS负责内存和外存的页交换 不建议 DBMS管理一系列的page作为存储单元 ..."/><meta name="generator" content="Quartz"/><link href="./index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="./prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("./static/contentIndex.json").then(data => data.json())</script></head><body data-slug="CMU-15-445"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href=".">🐧 Blog</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>搜索</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;数据库&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;c++&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;Daily&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="数据库"><button class="folder-button"><span class="folder-title">数据库</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="数据库"><li><a href="./数据库/并发控制" data-for="数据库/并发控制">并发控制</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="c++"><button class="folder-button"><span class="folder-title">c++</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="c++"><li><a href="./c++/定义与声明" data-for="c++/定义与声明">定义与声明</a></li><li><a href="./c++/学习资料" data-for="c++/学习资料">学习资料</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="Daily"><button class="folder-button"><span class="folder-title">Daily</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="Daily"><li><a href="./Daily/2022-10-04" data-for="Daily/2022-10-04">2022-10-04</a></li><li><a href="./Daily/2022-10-09" data-for="Daily/2022-10-09">2022-10-09</a></li><li><a href="./Daily/2023-08-19" data-for="Daily/2023-08-19">2023-08-19</a></li><li><a href="./Daily/2023-08-22" data-for="Daily/2023-08-22">2023-08-22</a></li><li><a href="./Daily/2023-10-15" data-for="Daily/2023-10-15">2023-10-15</a></li><li><a href="./Daily/2023-10-23" data-for="Daily/2023-10-23">2023-10-23</a></li><li><a href="./Daily/2023-10-24" data-for="Daily/2023-10-24">2023-10-24</a></li><li><a href="./Daily/2023-10-25" data-for="Daily/2023-10-25">2023-10-25</a></li><li><a href="./Daily/2023-10-26" data-for="Daily/2023-10-26">2023-10-26</a></li><li><a href="./Daily/2023-10-30" data-for="Daily/2023-10-30">2023-10-30</a></li><li><a href="./Daily/2023-10-31" data-for="Daily/2023-10-31">2023-10-31</a></li><li><a href="./Daily/2023-11-01" data-for="Daily/2023-11-01">2023-11-01</a></li><li><a href="./Daily/2023-11-06" data-for="Daily/2023-11-06">2023-11-06</a></li><li><a href="./Daily/2023-11-08" data-for="Daily/2023-11-08">2023-11-08</a></li><li><a href="./Daily/2023-11-13" data-for="Daily/2023-11-13">2023-11-13</a></li><li><a href="./Daily/2023-11-14" data-for="Daily/2023-11-14">2023-11-14</a></li><li><a href="./Daily/2023-11-19" data-for="Daily/2023-11-19">2023-11-19</a></li><li><a href="./Daily/2023-11-27" data-for="Daily/2023-11-27">2023-11-27</a></li><li><a href="./Daily/2023-11-28" data-for="Daily/2023-11-28">2023-11-28</a></li><li><a href="./Daily/2023-12-01" data-for="Daily/2023-12-01">2023-12-01</a></li><li><a href="./Daily/2023-12-05" data-for="Daily/2023-12-05">2023-12-05</a></li><li><a href="./Daily/2023-12-19" data-for="Daily/2023-12-19">2023-12-19</a></li><li><a href="./Daily/2023-12-20" data-for="Daily/2023-12-20">2023-12-20</a></li><li><a href="./Daily/2023-12-23" data-for="Daily/2023-12-23">2023-12-23</a></li><li><a href="./Daily/2023-12-28" data-for="Daily/2023-12-28">2023-12-28</a></li><li><a href="./Daily/2024-01-06" data-for="Daily/2024-01-06">2024-01-06</a></li><li><a href="./Daily/2024-01-07" data-for="Daily/2024-01-07">2024-01-07</a></li><li><a href="./Daily/2024-01-09" data-for="Daily/2024-01-09">2024-01-09</a></li><li><a href="./Daily/2024-01-18" data-for="Daily/2024-01-18">2024-01-20</a></li><li><a href="./Daily/2024-01-20" data-for="Daily/2024-01-20">2024-01-20</a></li><li><a href="./Daily/2024-02-08" data-for="Daily/2024-02-08">2024-02-08</a></li><li><a href="./Daily/2024-02-10" data-for="Daily/2024-02-10">2024-02-10</a></li><li><a href="./Daily/2024-02-12" data-for="Daily/2024-02-12">2024-02-12</a></li><li><a href="./Daily/2024-02-13" data-for="Daily/2024-02-13">2024-02-13</a></li><li><a href="./Daily/2024-02-15" data-for="Daily/2024-02-15">2024-02-15</a></li><li><a href="./Daily/2024-02-26" data-for="Daily/2024-02-26">2024-02-26</a></li><li><a href="./Daily/2024-03-21" data-for="Daily/2024-03-21">2024-03-21</a></li><li><a href="./Daily/2024-08-12" data-for="Daily/2024-08-12">2024-08-12</a></li><li><a href="./Daily/2024-08-14" data-for="Daily/2024-08-14">2024-08-14</a></li><li><a href="./Daily/2024-08-15" data-for="Daily/2024-08-15">2024-08-15</a></li><li><a href="./Daily/2024-08-16" data-for="Daily/2024-08-16">2024-08-16</a></li><li><a href="./Daily/2024-09-09" data-for="Daily/2024-09-09">2024-09-09</a></li><li><a href="./Daily/2024-09-11" data-for="Daily/2024-09-11">2024-09-11</a></li><li><a href="./Daily/2024-09-13" data-for="Daily/2024-09-13">2024-09-13</a></li><li><a href="./Daily/2024-09-23" data-for="Daily/2024-09-23">2024-09-23</a></li><li><a href="./Daily/2024-10-08" data-for="Daily/2024-10-08">2024-10-08</a></li><li><a href="./Daily/2024-10-19" data-for="Daily/2024-10-19">2024-10-19</a></li><li><a href="./Daily/2024-11-12" data-for="Daily/2024-11-12">2024-11-12</a></li><li><a href="./Daily/2024-11-13" data-for="Daily/2024-11-13">2024-11-13</a></li><li><a href="./Daily/2024-11-24" data-for="Daily/2024-11-24">2024-11-24</a></li><li><a href="./Daily/2024-12-06" data-for="Daily/2024-12-06">2024-12-06</a></li><li><a href="./Daily/2024-12-10" data-for="Daily/2024-12-10">2024-12-10</a></li><li><a href="./Daily/2024-12-23" data-for="Daily/2024-12-23">2024-12-23</a></li><li><a href="./Daily/2024-12-29" data-for="Daily/2024-12-29">2024-12-29</a></li></ul></div></li><li><a href="./01背包" data-for="01背包">01背包</a></li><li><a href="./6840" data-for="6840">6840</a></li><li><a href="./编译原理" data-for="编译原理">编译原理</a></li><li><a href="./操作系统" data-for="操作系统">操作系统</a></li><li><a href="./动态规划" data-for="动态规划">动态规划</a></li><li><a href="./多重背包" data-for="多重背包">多重背包</a></li><li><a href="./分组背包" data-for="分组背包">分组背包</a></li><li><a href="./计算机图形学" data-for="计算机图形学">计算机图形学</a></li><li><a href="./算法" data-for="算法">算法</a></li><li><a href="./图图" data-for="图图">图图</a></li><li><a href="./完全背包" data-for="完全背包">完全背包</a></li><li><a href="./bsdiff" data-for="bsdiff">bsdiff</a></li><li><a href="./BST" data-for="BST">BST</a></li><li><a href="./c" data-for="c">c</a></li><li><a href="./CLRS" data-for="CLRS">CLRS</a></li><li><a href="./CMU-15-445" data-for="CMU-15-445">CMU 15-445</a></li><li><a href="./cpp" data-for="cpp">cpp</a></li><li><a href="./csapp" data-for="csapp">csapp</a></li><li><a href="./csharp" data-for="csharp">csharp</a></li><li><a href="./ddia" data-for="ddia">ddia</a></li><li><a href="./git" data-for="git">git</a></li><li><a href="./IAD" data-for="IAD">IAD</a></li><li><a href="./IO缓冲" data-for="IO缓冲">IO缓冲</a></li><li><a href="./java" data-for="java">java</a></li><li><a href="./leveldb" data-for="leveldb">leveldb</a></li><li><a href="./libc" data-for="libc">libc</a></li><li><a href="./make" data-for="make">make</a></li><li><a href="./nemu" data-for="nemu">nemu</a></li><li><a href="./Obsidian" data-for="Obsidian">Obsidian</a></li><li><a href="./python" data-for="python">python</a></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="./">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>CMU 15-445</a></div></nav><h1 class="article-title">CMU 15-445</h1><p show-comma="true" class="content-meta"><time datetime="2024-07-20T12:08:04.400Z">2024年7月20日</time><span>18分钟阅读</span></p></div></div><article class="popover-hint"><p>data model</p>
+<p>关系，K/V，图等等</p>
+<p>schema</p>
+<p>entity和他们的attribute</p>
+<p>relational algebra是procedure的</p>
+<p>SQL</p>
+<p>windows function<del>为每一行计算一个新值？</del></p>
+<p>可以用来得到行号，排名rank</p>
+<p>mmap</p>
+<p>让OS负责内存和外存的页交换</p>
+<p>不建议</p>
+<p>DBMS管理一系列的page作为存储单元</p>
+<p>找到page的方法可以是链表或者目录式</p>
+<p>heap</p>
+<p>page中如何组织内容</p>
+<p>1.tuple-oriented</p>
+<p><del>strawman 谬误做法</del></p>
+<p>定长记录在block中的组织方式</p>
+<p>在删除时除了将最后的记录移过来填补空位这种做法，还可以保留一个file header，维护free list（空缺位置的链表）</p>
+<p>以链表形式记录可用位置</p>
+<p>slotted page</p>
+<p>在块中组织变长记录</p>
+<p><img src="./attachments/Pasted-image-20240122161854.png" width="auto" height="auto" alt/></p>
+<p>当需要修改时只需要维护slot array中的偏移</p>
+<p>支持可变长</p>
+<p>中间可能会有碎片</p>
+<p>可以在postgres中简单测试检验这一行为</p>
+<p>这种结构规定了（外部？）只能保存指向块头中的指针，而不能保存直接指向记录的指针（大概是因为tuple会移动）</p>
+<p>Problem #1: Fragmentation</p>
+<p>→ Pages are not fully utilized (unusable space, empty slots).</p>
+<p>Problem #2: Useless Disk I/O</p>
+<p>→ DBMS must fetch entire page to update one tuple.</p>
+<p>Problem #3: Random Disk I/O</p>
+<p>→ Worse case scenario when updating multiple tuples is</p>
+<p>that each tuple is on a separate page.</p>
+<p>What if the DBMS cannot overwrite data in</p>
+<p>pages and could only create new pages?</p>
+<p>2.log-structed
+每个tuple有一个唯一标记
+写操作时，只追加PUT或DEL到某个tuple的操作日志，不实际执行
+读操作麻烦了
+保留一个指向每个tuple最新的日志的索引（不一定存在最新日志）
+可以压缩日志，压缩之后每个tuple的操作至多出现一次，存储到磁盘上的时候可以放弃时序信息，而是按他们的id排序，便于读取</p>
+<p>压缩方法</p>
+<p>universal 归并？</p>
+<p>level 层级的？</p>
+<p>有写放大问题</p>
+<p>一次逻辑写变成很多次物理写</p>
+<p>3.index-organized</p>
+<p>tuple中如何组织内容</p>
+<p>防止跨字读取 填充和重排序</p>
+<p>现有数据库如何处理numeric</p>
+<p>NULL标记 推荐方法 bitmap</p>
+<p>大文件的存储</p>
+<p>workload</p>
+<p><img src="./attachments/Pasted-image-20240122210801.png" width="auto" height="auto" alt/></p>
+<p>NSM</p>
+<p>DSM</p>
+<p>一个block只存一个属性（column store）</p>
+<p>PAX</p>
+<p>row group</p>
+<p>column chunk</p>
+<p>在row group中column store</p>
+<h3 id="提高io效率">提高I/O效率<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#提高io效率" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>i/o是数据库瓶颈</p>
+<p>通过压缩来提高IO效率</p>
+<p>naive compression</p>
+<p>使用通用压缩技术，同时意味着DBMS不能理解压缩后的数据</p>
+<p>zstd</p>
+<p>希望不用解压缩就能操作数据，将操作转换为等价的压缩后的表示</p>
+<p>column level</p>
+<p>可以混合使用多种策略</p>
+<p>run-length encoding</p>
+<p>RLE Triplet</p>
+<p>value,offset,length</p>
+<p>把相邻的相同value的值合并</p>
+<p>排序后效果更好</p>
+<p>bit packing</p>
+<p>使用空间比声明所需的空间小（int32，但是数很小）</p>
+<p>丢掉没有使用的位（转为int8）</p>
+<p>mostly encoding</p>
+<p>允许bit packing中出现一些确实使用了很多空间的值的特例</p>
+<p>把他们设置为特殊值（即指示从字典查），单独用字典存储</p>
+<p><img src="./attachments/Pasted-image-20240429140334.png" width="auto" height="auto" alt/></p>
+<p>bitmap encoding</p>
+<p>对一个属性的每个取值，使用一个bit来对应</p>
+<p>适合取值情况极少的</p>
+<p>delta encoding</p>
+<p>存储前缀和表</p>
+<p>dictionary encoding</p>
+<p>常用</p>
+<p>希望字典的键（压缩表示）有和值（原值）一样的ordering来进行点查询和范围查询 保序</p>
+<p>字典要支持压缩和解压</p>
+<p>解压是常规的，从键得到值</p>
+<p>压缩是为了让我们做到前面说的把操作转换为等价的压缩后表示</p>
+<h3 id="qwq">qwq<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#qwq" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>去哪里读入（空间局部性）</p>
+<p>什么时候读入/写回</p>
+<p>multiple bufferpool</p>
+<p>减少锁争用，增加局部性</p>
+<p>prefetch</p>
+<p>不仅是最简单的sequential access可以，index（b+树）的访问也可以</p>
+<p>scan sharing</p>
+<p>合并扫描相同表的指针</p>
+<p>continuous scan sharing</p>
+<p>有一个一直循环扫描的指针</p>
+<p>需要时跳上去</p>
+<p>bypass</p>
+<p>不在buffer pool中保存，只是临时自己使用内存page</p>
+<p>LRU和CLOCK不记录频率，只记录了最近访问时间</p>
+<p>sequential flooding</p>
+<p>OLAP中，读过一次的page不会再被读，最近访问的是最适合evict的</p>
+<p>一次顺序读取把LRU记录信息全部变成没有意义的东西的意思</p>
+<p>LRU-K</p>
+<p>可能还有个记录驱逐信息的cache</p>
+<p>两个辅助优化</p>
+<p>localization</p>
+<p>query局部作判断</p>
+<p>防止污染</p>
+<p>priority hints</p>
+<p>dirty page处理</p>
+<p>backgrounding writing默默处理dirty page</p>
+<p>OS和硬件有一些最大化disk bandwidth的机制会重排IO请求</p>
+<p>但是他们不知道请求优先级（是background writing还是更重要的writing）(linux支持优先级设置？)</p>
+<p>一样的，DBMS会绕过操作系统的IO使用direct io</p>
+<p>fwrite不保证写入到文件，只保证进入了OS的cache</p>
+<p>fsync可以保证</p>
+<p>为什么fsync要设计成fail之后将dirty page设置为clean</p>
+<p>（前提可能是认为fsync fail代表那个设备离开了）1个u盘被拔出了fsync失败，脏的页没必要继续为他继续保留</p>
+<p><img src="./attachments/Pasted-image-20240203191132.png" width="auto" height="auto" alt/></p>
+<h3 id="hash-table">hash table<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hash-table" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>平均时间复杂度 O(1)</p>
+<p>但是在DBMS中常数matter</p>
+<h4 id="hash-function">hash function<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hash-function" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>如何映射</p>
+<p>快速映射和碰撞率的trade-off</p>
+<p>facebook xxhash3</p>
+<h4 id="hash-scheme">hash scheme<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hash-scheme" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>如何解决冲突</p>
+<p>分配大哈希表和增加get/put所需操作之间的trade-off</p>
+<h5 id="static-hashing-scheme">static hashing scheme<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#static-hashing-scheme" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>如果空间不够，重新创建hash table</p>
+<p><span class="text-highlight">linear probe</span></p>
+<p>如何处理删除</p>
+<p>#1 <span class="text-highlight">tombstone</span></p>
+<p>#2 move （应该是指把空位填充上）</p>
+<p>如何处理non-unique keys</p>
+<p>#1 seperate linked list 存储一个指针，指向存储所有可能值的列表，而不是存储值本身</p>
+<p>#2 redundant keys 直接一起放重复值（似乎兼容linear probing（？））</p>
+<p>cuckoo</p>
+<p><del>鸟在别人的窝下蛋</del></p>
+<p>使用同一个algorithm的不同seed版本的<span class="text-highlight">多个hash functions</span></p>
+<p>如果没有位置，驱逐一个元素给它重新找位置</p>
+<p>缺点 需要做random io</p>
+<p><span class="text-highlight">swiss tables</span></p>
+<p>robin hood</p>
+<p>hopscotch</p>
+<h5 id="dynamic-hashing-scheme">dynamic hashing scheme<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dynamic-hashing-scheme" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>chained hashing</p>
+<p>每个bucket保存一个链表，线性查找key</p>
+<p>优化 为每个bucket添加一个bloom filter指示某个键是否存在 避免不存在情况下的无效遍历</p>
+<blockquote class="callout notes" data-callout="notes">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Notes</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>bloom filter
+是一种probabilistic数据结构，不会出现false negatives但可能出现false positives
+由bitmap和多个hash function组成
+insert时将键计算多个hash function，对bitmap长度取模，对应位设置1
+lookup时检查
+不支持delete</p>
+</div>
+</blockquote>
+<p>extendible hashing</p>
+<p>避免chained hashing中的list变得过长</p>
+<p>局部的incremental rehashing</p>
+<p>图中展示了local depth=global depth时的策略，即global depth翻倍</p>
+<p>这里是前缀</p>
+<p><img src="./attachments/Pasted-image-20240203234020.png" width="auto" height="auto" alt/></p>
+<p><img src="./attachments/Pasted-image-20240203234221.png" width="auto" height="auto" alt/></p>
+<p>linear hashing</p>
+<p>分摊</p>
+<p>overflow时rehash split pointer指向的</p>
+<p>根据当前hash的和split pointer的关系（图中是上下关系）选择应该用哪个hash function</p>
+<p>具体做法可能是先用旧的function试，如果映射到了split pointer上方的框就说明得用新的function</p>
+<p><img src="./attachments/Pasted-image-20240203235057.png" width="auto" height="auto" alt/></p>
+<p>b-tree</p>
+<p>一系列数据结构，通常是指balanced</p>
+<p>b+-tree</p>
+<p>transaction level correctness</p>
+<p>可能平时纠结了上述意义下的并发正确性，对于数据结构的实现似乎只需要保证下面的正确性（大概是指一个写者或任意多个读者）</p>
+<p>data structure level correctness</p>
+<p>latch crabbing/coupling</p>
+<p>乐观锁</p>
+<p>假设大部分情况下不需要merge/split，不需要持有父节点的写锁，使用读锁一路遍历到叶节点再判断</p>
+<p>在一般的b+树中，由于遍历顺序都是自顶向下，不存在死锁</p>
+<p>但是如果在相同层级的节点之间建立横向连接，可能出现死锁，并且（由于thread通信/维护thread在做什么这件事代价很大）假设没有一种中心化的控制，当出现得不到锁的情况，与其等待，我们选择的策略是杀掉自己，撤销自己做的。</p>
+<p>外部排序算法思路<br/>
+分治<br/>
+如何存储中间结果<br/>
+key/value的pair，其中key是排序基准，value是tuple<br/>
+row store倾向于在中间结果中直接保存tuple本身，因为store的时候就是这样的<br/>
+col store是存储record id<br/>
+前者称为early materialization，后者称为late</p>
+<p><img src="./attachments/Pasted-image-20240222001541.png" width="auto" height="auto" alt/></p>
+<p>2-way merge只需要bpm中能存放三个page，两个用于读，一个用于写<br/>
+n page需要pass数为1+log2N上取整<br/>
+io花费是2n * pass</p>
+<p>更大的内存<br/>
+可以直接in memory做，跳过几个run<br/>
+可以更多way<br/>
+树更胖更矮</p>
+<p>double buffering<br/>
+重叠io和cpu<br/>
+与其增大way数（？），选择留一半的bpm page用来做双缓冲，cpu归并的时候，磁盘可以读到另一半为下一次归并做准备<br/>
+能优化响应时间 不太影响吞吐量（？）这点还不太能辨析</p>
+<p>比较优化<br/>
+使用hardcode的sort func（c++模板编程技术）而不是传递函数指针给通用排序函数<br/>
+suffix trunctation<br/>
+字符串比较先使用一个binary prefix，相等了fallback到正常的完整比较</p>
+<p>使用b-tree加速<br/>
+b树的叶子节点存储了record id</p>
+<p>clustered保证了附近叶子的record都在一个page上，从左到右遍历叶节点比外部排序显然更快  unclustered的话还是不要这样遍历的用了，random io太</p>
+<p>group by和distinct并不一定需要sorting来做，可以用hashing来做<br/>
+这里是先“一分多”，b-1个page用来输出</p>
+<p>Partition：首先使用哈希函数h1将所有tuple按照key放进不同的分区（分区大小能保证能在内存里操作，h1保证了相同哈希的都被聚集在这个分区了）<br/>
+ReHash：对于每一个分区，使用哈希函数h2在内存中建立哈希表，并维护聚合所需信息（如最小值、总和等）</p>
+<p>early/late materialization</p>
+<p>join时创建表格的复制 可预测的io</p>
+<p>这里可预测个人理解是指tuple的数量，位置不确定，对磁盘不友好</p>
+<p>join时只记录tuple的唯一标识符 不可预测的io</p>
+<p>naive nested loop join</p>
+<p>block nested loop join</p>
+<p>RxS 使用B-2个页面缓存R，1个页面读入S，这样同时有更多的页面在内存中，他们一起和读入的S做join</p>
+<p>index nested loop join</p>
+<p>process model</p>
+<p>函数调用，指令缓存不友好<br/>
+容易出现pipeline breaker<br/>
+materialization<br/>
+vecterization<br/>
+介于前两者之间，可以使用simd优化</p>
+<p>access model<br/>
+seq scan</p>
+<p>遍历table的所有page中的所有tuple<br/>
+优化方式 Data skipping</p>
+<p>实现方式 Approximate Queries 和 Zone Maps</p>
+<p>Zone map统计了该zone下的一些特征，如平均值</p>
+<p>zone map和zone本身一起保存，不节省io，但是节省cpu</p>
+<p>如果不和zone一起保存，维护更麻烦，但是节省cpu和io</p>
+<p>halloween problem<br/>
+更新操作重复更新一个tuple多次</p>
+<p>解决方法 追踪要修改的record id</p>
+<p>expression evaluation优化</p>
+<p>常规方法是树的遍历</p>
+<p>更好的方法是即时编译出计算表达式的函数</p>
+<p>index scan</p>
+<p>query planning<br/>
+catalog记录了所有表格的统计信息（记录数，page数），索引<br/>
+估算每个查询计划的io（读写页次数）<br/>
+vectorization(使用管道)避免了执行过程中不必要的materialization，减少io</p>
+<p>得到的查询树需要转为physical plan（这个转化关系也不是11对应）发送给scheduler</p>
+<p>physical plan描述了access path（管道，scan，b树等）和成本估计</p>
+<p>找到所有等价查询树是np难问题</p>
+<p>rule base</p>
+<p>不需要考虑数据情况</p>
+<p>如predicate pushdown，使用笛卡尔积</p>
+<p>cost base</p>
+<p>log_debug宏</p>
+<p>transaction</p>
+<p>correction criteria ACID</p>
+<p>其中atomicity和persistency用undo/redo实现，isolation用并发控制，consistency用integrity constraint</p>
+<p>atomicity实现</p>
+<p>logging</p>
+<p>shadowing</p>
+<p>在复制上进行操作，提交时使操作可见</p>
+<p>eventual consistency</p>
+<p>保证最终到达一致状态，但可能使不一致状态可见？压力来到应用程序员</p>
+<p>serial execution</p>
+<p>unrepeatable read 同一个事务的连续两次读得到不同值，违背隔离</p>
+<p>dirty write 读到未提交的值</p>
+<p>lost update<br/>
+<img src="./attachments/Pasted-image-20240307102831.png" width="auto" height="auto" alt/></p>
+<p>从时间更早的指向更晚的，不能有环</p>
+<p>刻画了依赖关系</p>
+<p>串行化调度</p>
+<p>有多种排列顺序，但都<span class="text-highlight">被认为是</span>正确的</p>
+<p>两段锁协议2PL</p>
+<p>直觉：从时间图上看，每个transaction获取锁的数量先上升后下降，谁先到达lock point谁先执行，由于依赖图中的边的顶点至少有一个写，两个顶点的事务的锁不兼容，必须等待，保证了依赖/顺序关系</p>
+<p>悲观地打破了依赖图中的边<br/>
+仍然会有脏读<br/>
+严格2PL</p>
+<p>OCC</p>
+<p>p0记录<br/>
+debug还是不太会，不知道gdb里用一个父类指针看一个子类的模板实例的一个模板成员</p>
+<p>p1记录<br/>
+newpage和fetchpage的时候record access即可<br/>
+但是unpin也传入了access</p>
+<p>p2记录<br/>
+比较离谱，把锁的获取放在读写guard构造函数外面才行<br/>
+<del>然后bpm的新加的获取guard的三个函数乱加锁（指直接使用scope lock，能通过的做法是直接调用原来的外部接口，因为它已经上锁了）也会出问题</del><br/>
+没正确理解要求中合并的前提（以为是两个都为空才能合并）<br/>
+写了个边迭代边修改容器的bug<br/>
+没过qps test是因为remove的时候没有在已经存在该key时直接return false</p>
+<p>p3记录<br/>
+seq-scan执行中用到了catalog提供的tableheap中提供的iterator，不知道bpm的操作是谁做的</p>
+<p>良好的practice<br/>
+在头文件上方绘制了数据结构在内存中的示意图<br/>
+提供了打印每种page信息的函数<br/>
+integrity check</p>
+<p>存储部分的主要目的：hide latency</p>
+<p>如何找到一个page</p>
+<p>每个page都有一个唯一的identifier，常见的组织页面的实现方法是heap</p>
+<p>tuple-based, index-based, log-based  NSM</p>
+<p>OLTP</p>
+<p>N S M : S U M M A R Y</p>
+<p>Advantages</p>
+<p>→ Fast inserts, updates, and deletes.</p>
+<p>→ Good for queries that need the entire tuple (OLTP).</p>
+<p>→ Can use index-oriented physical storage for clustering.</p>
+<p>Disadvantages</p>
+<p>→ Not good for scanning large portions of the table and/or a subset of the attributes.</p>
+<p>→ Terrible memory locality in access patterns.</p>
+<p>→ Not ideal for compression because of multiple value domains within a single page.</p>
+<p>D E C O M P O S I T I O N S TO R AG E M O D E L ( D S M )</p>
+<p>Advantages</p>
+<p>→ Reduces the amount wasted I/O per query because the DBMS only reads the data that it needs.</p>
+<p>→ Faster query processing because of increased locality and cached data reuse.</p>
+<p>→ Better data compression (more on this later)</p>
+<p>Disadvantages</p>
+<p>→ Slow for point queries, inserts, updates, and deletes because of tuple splitting/stitching/reorganization.</p>
+<p>为什么mvcc写不阻塞读</p>
+<p>mvcc存在write skew anomaly</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#提高io效率" data-for="提高io效率">提高I/O效率</a></li><li class="depth-0"><a href="#qwq" data-for="qwq">qwq</a></li><li class="depth-0"><a href="#hash-table" data-for="hash-table">hash table</a></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.0</a> © 2025</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="./postscript.js" type="module"></script></html>

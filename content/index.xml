@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>🐧 Blog</title>
+      <link>https://swingurm.github.io/quartz</link>
+      <description>最近的10条笔记 on 🐧 Blog</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>2024-12-29</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-12-29</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-12-29</guid>
+    <description>CPU指令的原子性 Atomic vs. Non-Atomic Operations 首先需要注意有些指令是宏，并不是真正的单条指令 单条指令并不都是原子的 armv7提供了一条指令将两个32位寄存器组成64位，存储到内存中去，这条指令有torn write的风险 x86 纯读写指令只有在不跨cache line情况下才能保证原子 c++ - Is incrementing an int effectively atomic in specific cases? - Stack Overflow x86指令add DWORD PTR [rbp - 4] 1 具有CISC风格 可以被归类为Read Modify Write 这条指令设计多个uop 在这条指令中，涉及了两次总线的获取和释放，中间存在可以插入acquire的机会 AGENT 1 AGENT 2 load X inc C load X inc C store X store X lock前缀使得这条指令变成原子的，此外还有内存屏障功能 cache locking+缓存一致性 TODO 跨cache line的情况，以及失败的原子指令 原子指令对一致性的性能影响 c++ - Atomicity of loads and stores on x86 - Stack Overflow 单处理器系统只需提防中断，并行IO设备，DMA 赋值和构造的开销不一定差不多 对于字符串和容器类这些容器，赋值时可以考虑直接重用已分配的空间，而构造一定会开辟新空间。 因此这些类如果对性能有需求，不应在赋值函数使用copy-and-swap idiom String&amp; operator=(String&amp;&amp; rhs) noexcept{ String(std::move(rhs)).swap(*this); //这里构造临时对象个人理解是防止自赋值 return *this; }.</description>
+    <pubDate>Sun, 29 Dec 2024 10:38:55 GMT</pubDate>
+  </item><item>
+    <title>学习资料</title>
+    <link>https://swingurm.github.io/quartz/c++/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99</link>
+    <guid>https://swingurm.github.io/quartz/c++/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99</guid>
+    <description>测试功能介绍.</description>
+    <pubDate>Sun, 29 Dec 2024 09:48:05 GMT</pubDate>
+  </item><item>
+    <title>定义与声明</title>
+    <link>https://swingurm.github.io/quartz/c++/%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%A3%B0%E6%98%8E</link>
+    <guid>https://swingurm.github.io/quartz/c++/%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%A3%B0%E6%98%8E</guid>
+    <description>ODR one definition rule 一个模版，类型，函数，对象在一个翻译单元只能有一个定义 在一个程序中（的一个特定scope），一个函数和对象的定义只能有一个，否则链接出错；允许模版，类型和内联函数/变量出现多个相同的定义 类定义中的函数定义是implicitly inline的，可以被include到多个文件中而不违反ODR ...</description>
+    <pubDate>Sun, 29 Dec 2024 09:44:42 GMT</pubDate>
+  </item><item>
+    <title>2024-12-23</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-12-23</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-12-23</guid>
+    <description>std::uint8_t一般是unsigned char的别名，打印std::uint8_t*时会以C字符串(char*)的方式打印，unexpected &lt;bit&gt;提供了对unsigned的位运算支持。 Hacker’s Delight float加减法，只在数值倍数相差不超过1.6e7时有效 C字符串在cpp中类型是const ...</description>
+    <pubDate>Mon, 23 Dec 2024 08:49:25 GMT</pubDate>
+  </item><item>
+    <title>2024-12-10</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-12-10</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-12-10</guid>
+    <description>-stdlib=libc++后include头文件报错 -stdlib会影响编译器的很多行为，其中包括头文件搜索路径。 bits/stdc++.h是libstdc++实现特定的头文件，并非标准。.</description>
+    <pubDate>Tue, 10 Dec 2024 09:55:54 GMT</pubDate>
+  </item><item>
+    <title>2024-12-06</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-12-06</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-12-06</guid>
+    <description>/proc/partitons 系统中的所有块设备/分区 包括文件loopback模拟的块设备 devfs只代表硬件设备 裸设备 “绕过文件系统” 直接操作devfs下的设备文件 怎样理解阻塞非阻塞与同步异步的区别？ - 萧萧的回答 - 知乎 www.zhihu.com/question/19732473/answer/241673170 ...</description>
+    <pubDate>Thu, 05 Dec 2024 16:07:55 GMT</pubDate>
+  </item><item>
+    <title>libc</title>
+    <link>https://swingurm.github.io/quartz/libc</link>
+    <guid>https://swingurm.github.io/quartz/libc</guid>
+    <description>C标准历史 K&amp;R C 并没有标准化的早期 之后的标准化的版本都属于ISO C或者Standard C系列 ANSI C一般等同于C89 C95,C99,C11… C标准库头文件 POSIX POSIX 是标准 C 库的超集，并且 POSIX 在某些方面会参考 C 标准库。如果 C 标准库和 POSIX 之间存在冲突，则以 C 标准库为准。 ...</description>
+    <pubDate>Fri, 29 Nov 2024 05:17:31 GMT</pubDate>
+  </item><item>
+    <title>2024-11-24</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-11-24</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-11-24</guid>
+    <description>rust中比起C，将更多语法作为表达式处理，如if unit type 一种只包含一个实例的类型 rust中用来表示返回值为void empty type 无实例的类型 rust中用来表示不返回 变长类型 这里的变长的理解应该是编译期不能确定，运行期确定后不能改变 如[T]和str 不定长u8串，UTF-8编码 一般以引用形式出现 ...</description>
+    <pubDate>Sun, 24 Nov 2024 08:32:12 GMT</pubDate>
+  </item><item>
+    <title>2024-11-13</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-11-13</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-11-13</guid>
+    <description>信号 由内核向进程发出，或者由其他进程发出等 异步的操作系统机制 除零会触发exception，也会使得内核发出SIGFPE这个信号 多个同时发出的信号可能只会触发一次处理程序，处理程序需要考虑这种情况 defer sigprocmask()允许进程忽视信号，即暂时屏蔽信号的处理，并不会忽略或丢弃信号 通过阻止异步事件的处理，创建了一个临界区，保证了临界区和信号处理程序不会形成竞争 ...</description>
+    <pubDate>Wed, 13 Nov 2024 14:01:39 GMT</pubDate>
+  </item><item>
+    <title>2024-11-12</title>
+    <link>https://swingurm.github.io/quartz/Daily/2024-11-12</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2024-11-12</guid>
+    <description>引用 四种引用类型各自能绑定的值类别 注意避免发生悬垂引用 避免间接引用临时对象，这样不会再有延长生命周期的作用，导致引用悬垂 临时对象的声明周期到所在整个表达式的结尾，如果有初始化器，会存活到初始化器结束 T&amp;&amp; ref = std::move(T{}) result&amp;&amp; s1 = std::move(process(1)); ...</description>
+    <pubDate>Tue, 12 Nov 2024 03:08:52 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
