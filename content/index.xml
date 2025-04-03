@@ -6,10 +6,52 @@
       <description>最近的10条笔记 on 🐧 Blog</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2025-04-02</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-04-02</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-04-02</guid>
+    <description>编译链接观察 数据 #include &lt;unistd.h&gt; int a = 0; // Case 1 // extern int a; //Case 2 int main() { int x = a; return 0; } x86似乎不允许一条mov的源和目的都是内存地址 Case 1 mov 0x0(%rip),%eax //加载 a 到 %eax mov ...</description>
+    <pubDate>Wed, 02 Apr 2025 09:59:48 GMT</pubDate>
+  </item><item>
+    <title>15-445 实验remake记录</title>
+    <link>https://swingurm.github.io/quartz/15-445-%E5%AE%9E%E9%AA%8Cremake%E8%AE%B0%E5%BD%95</link>
+    <guid>https://swingurm.github.io/quartz/15-445-%E5%AE%9E%E9%AA%8Cremake%E8%AE%B0%E5%BD%95</guid>
+    <description>LRU-K Replacer 用双向链表+哈希表替换了原有实现 原有实现是哈希表指向每个frame对应的node，在node里存该frame的所有历史。evict时候需要遍历所有的frame😅 维护history和buffer两个双向链表，history保存访问次数不足k次的，buffer保存大于等于k次的。规定history中按earliest ...</description>
+    <pubDate>Mon, 24 Mar 2025 09:06:29 GMT</pubDate>
+  </item><item>
+    <title>2025-03-20</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-03-20</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-03-20</guid>
+    <description>SOP风格教程 SOP（Standard Operating Procedure）即标准操作流程，意味着将复杂任务拆解为明确的步骤 硬件视角的计算机 C视角下程序内部的状态：全局变量，stack frame们（注意每个栈帧有自己的pc） 状态迁移：执行指令，响应中断，输入输出 执行指令（纯计算的）可以改变程序内部的状态，发出系统调用（中断）才能改变外部的状态 ...</description>
+    <pubDate>Thu, 20 Mar 2025 13:05:17 GMT</pubDate>
+  </item><item>
+    <title>2025-03-08</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-03-08</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-03-08</guid>
+    <description>微软魅力时刻 正在重定向 正在重定向 数据的机器级表述 位运算就是我们接触的最早的“simd” 每个bit就是一个data 整数也可视作一个bitset，进而引出问题：如何进行集合操作（如成员归属判断，交集等） 遍历集合元素可以借助lowbit实现 一种高效的求二进制中有多少1的实现 这里是求|S| int bitset_size1(uint32_t ...</description>
+    <pubDate>Fri, 07 Mar 2025 17:51:30 GMT</pubDate>
+  </item><item>
+    <title>2025-02-27</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-02-27</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-02-27</guid>
+    <description>vdso amd和intel使用了不同的指令来优化系统调用（int 80?） 为了统一，在linux上使用vdso这个中间层 此外，vdso能优化那些看上去没必要陷入内核的调用，如时间 auxv 在linux的进程初始化之后的栈上，在env之后还有一系列变量 调用约定 caller-stored 调用者caller保存，在函数调用之前由caller入栈保存 ...</description>
+    <pubDate>Thu, 27 Feb 2025 07:53:37 GMT</pubDate>
+  </item><item>
+    <title>2025-02-18</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-02-18</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-02-18</guid>
+    <description>libc6提供了c库实现的功能，libc6-dev提供了用于构建使用c库的软件所需的额外文件A build-time/runtime package management - what’s the difference between installing libudev and libudev-dev - Unix &amp; ...</description>
+    <pubDate>Tue, 18 Feb 2025 07:14:00 GMT</pubDate>
+  </item><item>
+    <title>2025-02-07</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-02-07</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-02-07</guid>
+    <description>gpg抑制在gui中输入密码 Using Command-Line Passphrase Input for GPG with Git (for Windows) | by beta | Medium 在这个目录下创建 gpg.conf 和 gpg-agent.conf： C:\Users&lt;user&gt;\AppData\Roaming\gnupg\ ...</description>
+    <pubDate>Fri, 07 Feb 2025 10:29:20 GMT</pubDate>
+  </item><item>
     <title>2025-01-27</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-01-27</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-01-27</guid>
-    <description>Mine of Information - Beginner’s Guide to Installing from Source 5.4. Multithreading Problems False Sharing 没有正确性问题，归根结底还是因为访问了不同的内存地址吧 int sum1; int sum2; void thread1(int v[], int v_count) { sum1 = 0; for (int i = 0; i &lt; v_count; i++) sum1 += v[i]; } void thread2(int v[], int v_count) { sum2 = 0; for (int i = 0; i &lt; v_count; i++) sum2 += v[i]; } 1.首先, thread1 将 sum1 读入其缓存。由于该行不存在于其他任何缓存中, thread1 处于独占状态: 2.thread2 现在读取 sum2 。由于 thread1 的缓存行已经在独占状态，这会导致 thread1 的缓存行降级，并且缓存行现在在两个缓存中都处于共享状态： 3.thread1 现在将其更新后的总和写入 sum1 。由于它只在共享状态下拥有该行，因此必须升级该行并在 thread2 的缓存中无效该行： 4.thread2 现在将其更新后的总和写入到 sum2 中。由于 thread1 已在其缓存中失效了该缓存行，因此发生了一致性缺失，并且必须在 thread1 的缓存中失效该行，从而迫使 thread1 执行一致性写回： 5.下一次循环迭代现在开始， thread1 再次读取 sum1 。由于 thread2 刚刚在 thread1 的缓存中失效了缓存行，它会遇到一致性缺失。它还必须在 thread2 的缓存中降级该行，迫使 thread2 执行一致性写回操作： 6.thread2 最终读取了 sum2 。由于它有共享状态的缓存行，因此可以无需一致性活动就进行读取，我们又回到了步骤 2 结束时的情况 3到6昂贵的升级、一致性缺失和一致性写回 Title Unavailable | Site Unreachable Execution vs interpretation deepseek生成 传统硬件执行： 经典的CPU通过硬连线路（Hardwired Logic）直接实现取指-解码-执行周期。每条指令的每个步骤（如加法、跳转）都由专用电路处理。这种方式高效但灵活性低，修改指令集需重新设计硬件。 通过微码解释器，硬件专注于高效执行μops，而非直接处理复杂指令。这使得设计更模块化，例如现代CPU可复用相同的ALU（算术逻辑单元）处理多种指令。 软件解释器： 通过软件（如微码，即Microcode）实现指令的解释。复杂指令被分解为更小的微操作（μops），这些μops由底层硬件执行。微码存储在CPU内部的固件中，充当“解释器”，将复杂指令翻译为硬件可直接执行的原子操作。 示例： x86处理器的复杂指令（如字符串操作）会被微码分解为多个μops（如加载、计算、存储），硬件仅需实现这些基础操作。 向后兼容性： 微码允许通过更新固件（而非修改硬件）支持旧指令集。例如，新x86 CPU通过微码升级兼容几十年前的软件，无需重新设计电路。 历史背景（CISC架构）： 20世纪70-80年代，CISC（复杂指令集计算机，如x86）采用微码实现庞大指令集。指令集包含高度抽象的指令（如单条指令完成复杂操作），通过微码解释适配硬件，但牺牲了一定的效率。后来RISC（精简指令集）通过简化指令集和硬连线逻辑提高了性能，但现代CPU（如Intel/AMD）融合了两者：硬件直接执行常见指令，复杂指令仍依赖微码。 执行（硬连线）：高效但缺乏灵活性，适合固定指令集。 解释（微码）：灵活且简化硬件设计，支持复杂指令集和向后兼容。 cache可能会导致写放大 cpu是byte-addressable，而cacheline granularity更大 weak memory order 在strong中 8发生在5之后是不被允许的，观察到写的顺序得一致 锁需要维护状态16-40bytes 获取锁需要系统调用，耗时 coarse-grained locking 高争用下degrade 获取锁的延迟明显增加，即使是共享锁 乐观锁 试图优化读为大多数的情况 由于上述原因，共享锁没有用 • Associate a version with the shared resource • Writers still have to acquire an exclusive lock of some sort • This ensures that only one writer at a time has access to the resource • At the end of its critical section, a writer atomically increases the version • Readers only have to read the version • At the begin of its critical section, a reader atomically reads the current version • At the end of its critical section, a reader validates that the version did not change • Otherwise, a concurrent write occurred and the critical section is restarted writer(optLock) { lockExclusive(optLock.mutex) // begin critical section // modify the shared resource storeAtomic(optLock.version, optLock.version + 1) unlockExclusive(optLock.mutex) // end critical section } reader(optLock) { while(true) { current = loadAtomic(optLock.version); // begin critical section // read the shared resource if (current == loadAtomic(optLock.version)) // validate return; // end critical section } } 读者只需要两个原子load，比共享锁便宜 但是注意，共享资源在我们访问时可能被修改，不能做出consistent state的假设 更复杂的读操作需要更多中间检查 non-blocking算法 不依赖锁的，使用原子操作 一般是lock-free的同义词，表示至少能有一个线程能make progress lost update和A-B-A问题 CAS没有公平性，不保证某个线程最终能获得锁.</description>
+    <description>Mine of Information - Beginner’s Guide to Installing from Source 5.4. Multithreading Problems False Sharing 没有正确性问题，归根结底还是因为访问了不同的内存地址吧 int sum1; int sum2; void thread1(int v[], int v_count) { sum1 = 0; for (int i = 0; i &lt; v_count; i++) sum1 += v[i]; } void thread2(int v[], int v_count) { sum2 = 0; for (int i = 0; i &lt; v_count; i++) sum2 += v[i]; } 1.首先, thread1 将 sum1 读入其缓存。由于该行不存在于其他任何缓存中, thread1 处于独占状态: 2.thread2 现在读取 sum2 。由于 thread1 的缓存行已经在独占状态，这会导致 thread1 的缓存行降级，并且缓存行现在在两个缓存中都处于共享状态： 3.thread1 现在将其更新后的总和写入 sum1 。由于它只在共享状态下拥有该行，因此必须升级该行并在 thread2 的缓存中无效该行： 4.thread2 现在将其更新后的总和写入到 sum2 中。由于 thread1 已在其缓存中失效了该缓存行，因此发生了一致性缺失，并且必须在 thread1 的缓存中失效该行，从而迫使 thread1 执行一致性写回： 5.下一次循环迭代现在开始， thread1 再次读取 sum1 。由于 thread2 刚刚在 thread1 的缓存中失效了缓存行，它会遇到一致性缺失。它还必须在 thread2 的缓存中降级该行，迫使 thread2 执行一致性写回操作： 6.thread2 最终读取了 sum2 。由于它有共享状态的缓存行，因此可以无需一致性活动就进行读取，我们又回到了步骤 2 结束时的情况 3到6昂贵的升级、一致性缺失和一致性写回 lecture-10.1.pdf Execution vs interpretation deepseek生成 传统硬件执行： 经典的CPU通过硬连线路（Hardwired Logic）直接实现取指-解码-执行周期。每条指令的每个步骤（如加法、跳转）都由专用电路处理。这种方式高效但灵活性低，修改指令集需重新设计硬件。 通过微码解释器，硬件专注于高效执行μops，而非直接处理复杂指令。这使得设计更模块化，例如现代CPU可复用相同的ALU（算术逻辑单元）处理多种指令。 软件解释器： 通过软件（如微码，即Microcode）实现指令的解释。复杂指令被分解为更小的微操作（μops），这些μops由底层硬件执行。微码存储在CPU内部的固件中，充当“解释器”，将复杂指令翻译为硬件可直接执行的原子操作。 示例： x86处理器的复杂指令（如字符串操作）会被微码分解为多个μops（如加载、计算、存储），硬件仅需实现这些基础操作。 向后兼容性： 微码允许通过更新固件（而非修改硬件）支持旧指令集。例如，新x86 CPU通过微码升级兼容几十年前的软件，无需重新设计电路。 历史背景（CISC架构）： 20世纪70-80年代，CISC（复杂指令集计算机，如x86）采用微码实现庞大指令集。指令集包含高度抽象的指令（如单条指令完成复杂操作），通过微码解释适配硬件，但牺牲了一定的效率。后来RISC（精简指令集）通过简化指令集和硬连线逻辑提高了性能，但现代CPU（如Intel/AMD）融合了两者：硬件直接执行常见指令，复杂指令仍依赖微码。 执行（硬连线）：高效但缺乏灵活性，适合固定指令集。 解释（微码）：灵活且简化硬件设计，支持复杂指令集和向后兼容。 cache可能会导致写放大 cpu是byte-addressable，而cacheline granularity更大 weak memory order 在strong中 8发生在5之后是不被允许的，观察到写的顺序得一致 锁需要维护状态16-40bytes 获取锁需要系统调用，耗时 coarse-grained locking 高争用下degrade 获取锁的延迟明显增加，即使是共享锁 乐观锁 试图优化读为大多数的情况 由于上述原因，共享锁没有用 • Associate a version with the shared resource • Writers still have to acquire an exclusive lock of some sort • This ensures that only one writer at a time has access to the resource • At the end of its critical section, a writer atomically increases the version • Readers only have to read the version • At the begin of its critical section, a reader atomically reads the current version • At the end of its critical section, a reader validates that the version did not change • Otherwise, a concurrent write occurred and the critical section is restarted writer(optLock) { lockExclusive(optLock.mutex) // begin critical section // modify the shared resource storeAtomic(optLock.version, optLock.version + 1) unlockExclusive(optLock.mutex) // end critical section } reader(optLock) { while(true) { current = loadAtomic(optLock.version); // begin critical section // read the shared resource if (current == loadAtomic(optLock.version)) // validate return; // end critical section } } 读者只需要两个原子load，比共享锁便宜 但是注意，共享资源在我们访问时可能被修改，不能做出consistent state的假设 更复杂的读操作需要更多中间检查 non-blocking 不依赖锁的，使用原子操作 一般是lock-free的同义词，表示至少能有一个线程能make progress lost update和A-B-A问题 CAS没有公平性，不保证某个线程最终能获得锁.</description>
     <pubDate>Mon, 27 Jan 2025 09:45:25 GMT</pubDate>
   </item><item>
     <title>2025-01-23</title>
@@ -23,48 +65,6 @@
     <guid>https://swingurm.github.io/quartz/Daily/2025-01-10</guid>
     <description>编译工具链 Assembling a Complete Toolchain — Clang 20.0.0git documentation LLVM每日谈之四十一 组装一个完整的工具链 从这个翻译摘录了一些内容 语法/语义分析的产物pch/preamble/pcm -precompile但是实际上好像得是--precompile ...</description>
     <pubDate>Fri, 10 Jan 2025 11:01:49 GMT</pubDate>
-  </item><item>
-    <title>2024-12-29</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-12-29</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-12-29</guid>
-    <description>CPU指令的原子性 Atomic vs. Non-Atomic Operations 首先需要注意有些指令是宏，并不是真正的单条指令 单条指令并不都是原子的 armv7提供了一条指令将两个32位寄存器组成64位，存储到内存中去，这条指令有torn write的风险 x86 纯读写指令只有在不跨cache line情况下才能保证原子 c++ - Is incrementing an int effectively atomic in specific cases? - Stack Overflow x86指令add DWORD PTR [rbp - 4] 1 具有CISC风格 可以被归类为Read Modify Write 这条指令设计多个uop 在这条指令中，涉及了两次总线的获取和释放，中间存在可以插入acquire的机会 AGENT 1 AGENT 2 load X inc C load X inc C store X store X lock前缀使得这条指令变成原子的，此外还有内存屏障功能 cache locking+缓存一致性 TODO 跨cache line的情况，以及失败的原子指令 原子指令对一致性的性能影响 c++ - Atomicity of loads and stores on x86 - Stack Overflow 单处理器系统只需提防中断，并行IO设备，DMA 赋值和构造的开销不一定差不多 对于字符串和容器类这些容器，赋值时可以考虑直接重用已分配的空间，而构造一定会开辟新空间。 因此这些类如果对性能有需求，不应在赋值函数使用copy-and-swap idiom String&amp; operator=(String&amp;&amp; rhs) noexcept{ String(std::move(rhs)).swap(*this); //这里构造临时对象个人理解是防止自赋值 return *this; }.</description>
-    <pubDate>Sun, 29 Dec 2024 10:38:55 GMT</pubDate>
-  </item><item>
-    <title>学习资料</title>
-    <link>https://swingurm.github.io/quartz/c++/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99</link>
-    <guid>https://swingurm.github.io/quartz/c++/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99</guid>
-    <description>测试功能介绍.</description>
-    <pubDate>Sun, 29 Dec 2024 09:48:05 GMT</pubDate>
-  </item><item>
-    <title>定义与声明</title>
-    <link>https://swingurm.github.io/quartz/c++/%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%A3%B0%E6%98%8E</link>
-    <guid>https://swingurm.github.io/quartz/c++/%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%A3%B0%E6%98%8E</guid>
-    <description>ODR one definition rule 一个模版，类型，函数，对象在一个翻译单元只能有一个定义 在一个程序中（的一个特定scope），一个函数和对象的定义只能有一个，否则链接出错；允许模版，类型和内联函数/变量出现多个相同的定义 类定义中的函数定义是implicitly inline的，可以被include到多个文件中而不违反ODR ...</description>
-    <pubDate>Sun, 29 Dec 2024 09:44:42 GMT</pubDate>
-  </item><item>
-    <title>2024-12-23</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-12-23</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-12-23</guid>
-    <description>std::uint8_t一般是unsigned char的别名，打印std::uint8_t*时会以C字符串(char*)的方式打印，unexpected &lt;bit&gt;提供了对unsigned的位运算支持。 Hacker’s Delight float加减法，只在数值倍数相差不超过1.6e7时有效 C字符串在cpp中类型是const ...</description>
-    <pubDate>Mon, 23 Dec 2024 08:49:25 GMT</pubDate>
-  </item><item>
-    <title>2024-12-21</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-12-21</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-12-21</guid>
-    <description>research.swtch.com/hwmm 顺序一致性 要求遵守这一一致性的处理器的 任意一种实际执行 都满足等价于 所有处理器按照一个全局顺序执行，并且每个处理器中的操作按照其程序指定的顺序出现在该序列 共享内存可以一次服务一个线程的读取或写入请求 Litmus Test 测试模型是否允许特定的执行。结果只有两种，可能或不可能 ...</description>
-    <pubDate>Sat, 21 Dec 2024 12:16:16 GMT</pubDate>
-  </item><item>
-    <title>2024-12-10</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-12-10</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-12-10</guid>
-    <description>-stdlib=libc++后include头文件报错 -stdlib会影响编译器的很多行为，其中包括头文件搜索路径。 bits/stdc++.h是libstdc++实现特定的头文件，并非标准。.</description>
-    <pubDate>Tue, 10 Dec 2024 09:55:54 GMT</pubDate>
-  </item><item>
-    <title>2024-12-06</title>
-    <link>https://swingurm.github.io/quartz/Daily/2024-12-06</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2024-12-06</guid>
-    <description>/proc/partitons 系统中的所有块设备/分区 包括文件loopback模拟的块设备 devfs只代表硬件设备 裸设备 “绕过文件系统” 直接操作devfs下的设备文件 怎样理解阻塞非阻塞与同步异步的区别？ - 萧萧的回答 - 知乎 www.zhihu.com/question/19732473/answer/241673170 ...</description>
-    <pubDate>Thu, 05 Dec 2024 16:07:55 GMT</pubDate>
   </item>
     </channel>
   </rss>
