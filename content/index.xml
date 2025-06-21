@@ -6,6 +6,12 @@
       <description>最近的10条笔记 on 🐧 Blog</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2025-04-05</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-04-05</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-04-05</guid>
+    <description>python - What are the differences between Conda and Anaconda? - Stack Overflow python - Anaconda vs. miniconda - Stack Overflow python - What is the difference between pip and conda? - Stack Overflow Anaconda | Understanding Conda and Pip condapip管理二进制文件wheel或源代码可能需要编译器不是的包类型任何仅 Python创建环境是的，内置的不，需要 virtualenv 或 venv依赖检查是不包来源Anaconda 仓库和云服务PyPIConda: Myths and Misconceptions | Pythonic PerambulationsImproving interoperability with pip — conda 25.3.1 documentation conda config --set pip_interop_enabled True python - Running quicker for Numpy and Pandas( installed via conda) than via pip? - Stack Overflow python - What to do when pip &amp; conda overlap? - Stack Overflow 建议优先使用conda安装python包，2018年 conda install vs pip install Python - Qiita conda 虚拟环境，包管理器 conda 是一个基于python编写的命令行工具 conda处理预编译二进制.conda（或者源码？） mamba是conda的替换 Managing environments — conda 25.3.1.dev10 documentation 建议在conda之后使用pip 使用默认策略--upgrade-strategy only-if-needed 避免--user为全局用户（all users？）安装 pip python包管理器 pip使用预编译二进制wheel或者源码 当从源代码安装时，pip 会自动构建该包 anaconda Miniconda = conda+最小依赖环境（Python等） Anaconda = Miniconda + 一个元包 anaconda = Miniconda + conda install anaconda 元包 anaconda = 大约 160 个其他用于数据科学日常使用的 Python 包 nvidia和conda-forge仓库的cuda-toolkit在windows上测试是带工具链的.</description>
+    <pubDate>Sat, 05 Apr 2025 09:35:04 GMT</pubDate>
+  </item><item>
     <title>2025-04-02</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-04-02</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-04-02</guid>
@@ -33,7 +39,7 @@
     <title>2025-02-27</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-02-27</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-02-27</guid>
-    <description>vdso amd和intel使用了不同的指令来优化系统调用（int 80?） 为了统一，在linux上使用vdso这个中间层 此外，vdso能优化那些看上去没必要陷入内核的调用，如时间 auxv 在linux的进程初始化之后的栈上，在env之后还有一系列变量 调用约定 caller-stored 调用者caller保存，在函数调用之前由caller入栈保存 ...</description>
+    <description>cppnow_presentations_2023/cppnow_slides/Under_the_Hood.pdf at main · boostcon/cppnow_presentations_2023 · GitHub vdso amd和intel使用了不同的指令来优化系统调用（int 80?） 为了统一，在linux上使用vdso这个中间层 ...</description>
     <pubDate>Thu, 27 Feb 2025 07:53:37 GMT</pubDate>
   </item><item>
     <title>2025-02-18</title>
@@ -59,12 +65,6 @@
     <guid>https://swingurm.github.io/quartz/Daily/2025-01-23</guid>
     <description>基本数据类型 算术类型，void 为了支持分离式编译，C++语言将声明和定义区分开来。声明（declaration）使得名字为程序所知，一个文件如果想使用别处定义的名字则必须包含对那个名字的声明。而定义（definition）负责创建与名字关联的实体。 变量声明规定了变量的类型和名字，在这一点上定义与之相同。但是除此之外，定义还申请存储空间，也可能会为变量赋一个初始值。 ...</description>
     <pubDate>Thu, 23 Jan 2025 07:21:58 GMT</pubDate>
-  </item><item>
-    <title>2025-01-10</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-01-10</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-01-10</guid>
-    <description>编译工具链 Assembling a Complete Toolchain — Clang 20.0.0git documentation LLVM每日谈之四十一 组装一个完整的工具链 从这个翻译摘录了一些内容 语法/语义分析的产物pch/preamble/pcm -precompile但是实际上好像得是--precompile ...</description>
-    <pubDate>Fri, 10 Jan 2025 11:01:49 GMT</pubDate>
   </item>
     </channel>
   </rss>
