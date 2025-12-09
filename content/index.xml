@@ -6,65 +6,65 @@
       <description>最近的10条笔记 on 🐧 Blog</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>2025-04-05</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-04-05</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-04-05</guid>
-    <description>python - What are the differences between Conda and Anaconda? - Stack Overflow python - Anaconda vs. miniconda - Stack Overflow python - What is the difference between pip and conda? - Stack Overflow Anaconda | Understanding Conda and Pip condapip管理二进制文件wheel或源代码可能需要编译器不是的包类型任何仅 Python创建环境是的，内置的不，需要 virtualenv 或 venv依赖检查是不包来源Anaconda 仓库和云服务PyPIConda: Myths and Misconceptions | Pythonic PerambulationsImproving interoperability with pip — conda 25.3.1 documentation conda config --set pip_interop_enabled True python - Running quicker for Numpy and Pandas( installed via conda) than via pip? - Stack Overflow python - What to do when pip &amp; conda overlap? - Stack Overflow 建议优先使用conda安装python包，2018年 conda install vs pip install Python - Qiita conda 虚拟环境，包管理器 conda 是一个基于python编写的命令行工具 conda处理预编译二进制.conda（或者源码？） mamba是conda的替换 Managing environments — conda 25.3.1.dev10 documentation 建议在conda之后使用pip 使用默认策略--upgrade-strategy only-if-needed 避免--user为全局用户（all users？）安装 pip python包管理器 pip使用预编译二进制wheel或者源码 当从源代码安装时，pip 会自动构建该包 anaconda Miniconda = conda+最小依赖环境（Python等） Anaconda = Miniconda + 一个元包 anaconda = Miniconda + conda install anaconda 元包 anaconda = 大约 160 个其他用于数据科学日常使用的 Python 包 nvidia和conda-forge仓库的cuda-toolkit在windows上测试是带工具链的.</description>
-    <pubDate>Sat, 05 Apr 2025 09:35:04 GMT</pubDate>
+    <title>2025-11-01</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-11-01</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-11-01</guid>
+    <description><![CDATA[ 操作系统只能通过虚拟地址访问页表来修改页表 如何设置页表的虚拟地址 对于虚拟地址管够的64位系统，将高虚拟地址空间全部保留给内核，物理地址通过加上一个偏移量转为虚拟地址。 为了找到某级页表的虚拟地址，只需顺着多级页表访问直到得到其物理地址，然后转为虚拟地址即可访问。 2.recursive paging Advanced Paging | Writing an OS in Rust 以一个具有四层页表结构的地址转换方式为例 其中SSSSSS的设置与x86要求有关，可忽略 虚拟地址地址结构（八进制）页0o_SSSSSS_AAA_BBB_CCC_DDD_EEEE一级表项0o_SSSSSS_RRR_... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+  </item><item>
+    <title>2025-04-06</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-04-06</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-04-06</guid>
+    <description><![CDATA[ 寄存器分调用者保存和被调用者保存，可以根据变量生命周期分配到不同寄存器，减少保存变量开销 页表寄存器和页表中的所有地址 都是物理地址 TLB 能记录的映射条数有限 操作系统会编辑页表。为了保证与页表的一致性，tlb提供了flush接口，也就是将tlb设置为无效。这样做效率很低，ASID… 大页 占用tlb条数少，查页表所需的访存次数少 segmentation fault 以访问0地址为例，cpu会触发缺页异常，操作系统检查后发现访问了非法虚拟地址，即抛出segfault 延迟分配 demand paging 懒惰填写页表，因此需要额外记录真实虚拟空间，这是比实际页表映射更完整的 进程初始化时... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+  </item><item>
+    <title>2025-05-22</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-05-22</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-05-22</guid>
+    <description><![CDATA[ 谁创建了/dev/下的对象 udev 谁执行了mount udisk2 块设备容易导致读/写放大 为了让文件系统感知“块”的概念，引入bio这一中间层管理读写请求 overlayfs虚拟的目录 文件系统级api exit那些事 tldr:exit库函数高级封装了_exit()wrapper函数，_exit()wrap了exit_group。要使用exit系统调用可以syscall sys_exit。 准确来说似乎c语言exit包装的系统调用名为exit_group，这个系统调用据说唤醒（SIG_KILL）并杀死所有组内的线程 _exit是exit_group的包装 man_exit(2) By... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+  </item><item>
+    <title>2025-04-13</title>
+    <link>https://swingurm.github.io/quartz/Daily/2025-04-13</link>
+    <guid>https://swingurm.github.io/quartz/Daily/2025-04-13</guid>
+    <description><![CDATA[ CUDA 编程模型 线程→块→网格 网格如何划分为块 dim3 dimGrid(x,y,z); 定义了一个z纵y行x列的网格，即x,y,z是从“变化最快的”维度开始的，对比等价C语言写法应该是mat[z][y][x] 想想C语言中复合类型是怎么阅读的-由内而外。 //大小为10的数组，它的每个元素都是大小为20的数组 //这些数组的元素是含有30个整数的数组 int arr[10][20][30] = {0}；//将所有元素初始化为0 因此，对于二维情况 row = blockIdx.y * blockDim.y + threadIdx.y // vertical cord col = blo... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item><item>
     <title>2025-04-02</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-04-02</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-04-02</guid>
-    <description>编译链接观察 数据 #include &lt;unistd.h&gt; int a = 0; // Case 1 // extern int a; //Case 2 int main() { int x = a; return 0; } x86似乎不允许一条mov的源和目的都是内存地址 Case 1 mov 0x0(%rip),%eax //加载 a 到 %eax mov ...</description>
-    <pubDate>Wed, 02 Apr 2025 09:59:48 GMT</pubDate>
-  </item><item>
-    <title>15-445 实验remake记录</title>
-    <link>https://swingurm.github.io/quartz/15-445-%E5%AE%9E%E9%AA%8Cremake%E8%AE%B0%E5%BD%95</link>
-    <guid>https://swingurm.github.io/quartz/15-445-%E5%AE%9E%E9%AA%8Cremake%E8%AE%B0%E5%BD%95</guid>
-    <description>LRU-K Replacer 用双向链表+哈希表替换了原有实现 原有实现是哈希表指向每个frame对应的node，在node里存该frame的所有历史。evict时候需要遍历所有的frame😅 维护history和buffer两个双向链表，history保存访问次数不足k次的，buffer保存大于等于k次的。规定history中按earliest ...</description>
-    <pubDate>Mon, 24 Mar 2025 09:06:29 GMT</pubDate>
+    <description><![CDATA[ 编译链接观察 数据 #include &lt;unistd.h&gt; int a = 0; // Case 1 // extern int a; //Case 2 int main() { int x = a; return 0; } x86似乎不允许一条mov的源和目的都是内存地址 Case 1 mov 0x0(%rip),%eax //加载 a 到 %eax mov %eax,-0x4(%rbp) //读取 a 到 x Case 2 mov 0x0(%rip),%rax // 加载 optind 的地址到 %rax mov (%rax),%eax // 读取 optind 的值到 %ea... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item><item>
     <title>2025-03-20</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-03-20</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-03-20</guid>
-    <description>SOP风格教程 SOP（Standard Operating Procedure）即标准操作流程，意味着将复杂任务拆解为明确的步骤 硬件视角的计算机 C视角下程序内部的状态：全局变量，stack frame们（注意每个栈帧有自己的pc） 状态迁移：执行指令，响应中断，输入输出 执行指令（纯计算的）可以改变程序内部的状态，发出系统调用（中断）才能改变外部的状态 ...</description>
-    <pubDate>Thu, 20 Mar 2025 13:05:17 GMT</pubDate>
+    <description><![CDATA[ SOP风格教程 SOP（Standard Operating Procedure）即标准操作流程，意味着将复杂任务拆解为明确的步骤 硬件视角的计算机 C视角下程序内部的状态：全局变量，stack frame们（注意每个栈帧有自己的pc） 状态迁移：执行指令，响应中断，输入输出 执行指令（纯计算的）可以改变程序内部的状态，发出系统调用（中断）才能改变外部的状态 有用的prompt 我现在在[]，如果你是一个专业人士，你有什么更好的方法和建议吗，尽可能全面 BIOS basic i/o system 启动后常驻系统，提供输入输出服务 严格来说是firmware（cpu reset后执行的第一个软件... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item><item>
     <title>2025-03-08</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-03-08</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-03-08</guid>
-    <description>微软魅力时刻 正在重定向 正在重定向 数据的机器级表述 位运算就是我们接触的最早的“simd” 每个bit就是一个data 整数也可视作一个bitset，进而引出问题：如何进行集合操作（如成员归属判断，交集等） 遍历集合元素可以借助lowbit实现 一种高效的求二进制中有多少1的实现 这里是求|S| int bitset_size1(uint32_t ...</description>
-    <pubDate>Fri, 07 Mar 2025 17:51:30 GMT</pubDate>
+    <description><![CDATA[ 微软魅力时刻 正在重定向 正在重定向 数据的机器级表述 位运算就是我们接触的最早的“simd” 每个bit就是一个data 整数也可视作一个bitset，进而引出问题：如何进行集合操作（如成员归属判断，交集等） 遍历集合元素可以借助lowbit实现 一种高效的求二进制中有多少1的实现 这里是求|S| int bitset_size1(uint32_t S) { // SIMD S = (S &amp; 0x55555555) + ((S &gt;&gt; 1) &amp; 0x55555555); S = (S &amp; 0x33333333) + ((S &gt;&gt; 2) &amp;... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item><item>
     <title>2025-02-27</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-02-27</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-02-27</guid>
-    <description>cppnow_presentations_2023/cppnow_slides/Under_the_Hood.pdf at main · boostcon/cppnow_presentations_2023 · GitHub vdso amd和intel使用了不同的指令来优化系统调用（int 80?） 为了统一，在linux上使用vdso这个中间层 ...</description>
-    <pubDate>Thu, 27 Feb 2025 07:53:37 GMT</pubDate>
-  </item><item>
-    <title>2025-02-18</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-02-18</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-02-18</guid>
-    <description>libc6提供了c库实现的功能，libc6-dev提供了用于构建使用c库的软件所需的额外文件A build-time/runtime package management - what’s the difference between installing libudev and libudev-dev - Unix &amp; ...</description>
-    <pubDate>Tue, 18 Feb 2025 07:14:00 GMT</pubDate>
+    <description><![CDATA[ cppnow_presentations_2023/cppnow_slides/Under_the_Hood.pdf at main · boostcon/cppnow_presentations_2023 · GitHub vdso amd和intel使用了不同的指令来优化系统调用（int 80?） 为了统一，在linux上使用vdso这个中间层 此外，vdso能优化那些看上去没必要陷入内核的调用，如时间 auxv 在linux的进程初始化之后的栈上，在env之后还有一系列变量 调用约定 caller-stored 调用者caller保存，在函数调用之前由caller入栈保存 可以被call... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item><item>
     <title>2025-02-07</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-02-07</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-02-07</guid>
-    <description>gpg抑制在gui中输入密码 Using Command-Line Passphrase Input for GPG with Git (for Windows) | by beta | Medium 在这个目录下创建 gpg.conf 和 gpg-agent.conf： C:\Users&lt;user&gt;\AppData\Roaming\gnupg\ ...</description>
-    <pubDate>Fri, 07 Feb 2025 10:29:20 GMT</pubDate>
-  </item><item>
-    <title>2025-01-27</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-01-27</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-01-27</guid>
-    <description>Mine of Information - Beginner’s Guide to Installing from Source 5.4. Multithreading Problems False Sharing 没有正确性问题，归根结底还是因为访问了不同的内存地址吧 int sum1; int sum2; void thread1(int v[], int v_count) { sum1 = 0; for (int i = 0; i &lt; v_count; i++) sum1 += v[i]; } void thread2(int v[], int v_count) { sum2 = 0; for (int i = 0; i &lt; v_count; i++) sum2 += v[i]; } 1.首先, thread1 将 sum1 读入其缓存。由于该行不存在于其他任何缓存中, thread1 处于独占状态: 2.thread2 现在读取 sum2 。由于 thread1 的缓存行已经在独占状态，这会导致 thread1 的缓存行降级，并且缓存行现在在两个缓存中都处于共享状态： 3.thread1 现在将其更新后的总和写入 sum1 。由于它只在共享状态下拥有该行，因此必须升级该行并在 thread2 的缓存中无效该行： 4.thread2 现在将其更新后的总和写入到 sum2 中。由于 thread1 已在其缓存中失效了该缓存行，因此发生了一致性缺失，并且必须在 thread1 的缓存中失效该行，从而迫使 thread1 执行一致性写回： 5.下一次循环迭代现在开始， thread1 再次读取 sum1 。由于 thread2 刚刚在 thread1 的缓存中失效了缓存行，它会遇到一致性缺失。它还必须在 thread2 的缓存中降级该行，迫使 thread2 执行一致性写回操作： 6.thread2 最终读取了 sum2 。由于它有共享状态的缓存行，因此可以无需一致性活动就进行读取，我们又回到了步骤 2 结束时的情况 3到6昂贵的升级、一致性缺失和一致性写回 lecture-10.1.pdf Execution vs interpretation deepseek生成 传统硬件执行： 经典的CPU通过硬连线路（Hardwired Logic）直接实现取指-解码-执行周期。每条指令的每个步骤（如加法、跳转）都由专用电路处理。这种方式高效但灵活性低，修改指令集需重新设计硬件。 通过微码解释器，硬件专注于高效执行μops，而非直接处理复杂指令。这使得设计更模块化，例如现代CPU可复用相同的ALU（算术逻辑单元）处理多种指令。 软件解释器： 通过软件（如微码，即Microcode）实现指令的解释。复杂指令被分解为更小的微操作（μops），这些μops由底层硬件执行。微码存储在CPU内部的固件中，充当“解释器”，将复杂指令翻译为硬件可直接执行的原子操作。 示例： x86处理器的复杂指令（如字符串操作）会被微码分解为多个μops（如加载、计算、存储），硬件仅需实现这些基础操作。 向后兼容性： 微码允许通过更新固件（而非修改硬件）支持旧指令集。例如，新x86 CPU通过微码升级兼容几十年前的软件，无需重新设计电路。 历史背景（CISC架构）： 20世纪70-80年代，CISC（复杂指令集计算机，如x86）采用微码实现庞大指令集。指令集包含高度抽象的指令（如单条指令完成复杂操作），通过微码解释适配硬件，但牺牲了一定的效率。后来RISC（精简指令集）通过简化指令集和硬连线逻辑提高了性能，但现代CPU（如Intel/AMD）融合了两者：硬件直接执行常见指令，复杂指令仍依赖微码。 执行（硬连线）：高效但缺乏灵活性，适合固定指令集。 解释（微码）：灵活且简化硬件设计，支持复杂指令集和向后兼容。 cache可能会导致写放大 cpu是byte-addressable，而cacheline granularity更大 weak memory order 在strong中 8发生在5之后是不被允许的，观察到写的顺序得一致 锁需要维护状态16-40bytes 获取锁需要系统调用，耗时 coarse-grained locking 高争用下degrade 获取锁的延迟明显增加，即使是共享锁 乐观锁 试图优化读为大多数的情况 由于上述原因，共享锁没有用 • Associate a version with the shared resource • Writers still have to acquire an exclusive lock of some sort • This ensures that only one writer at a time has access to the resource • At the end of its critical section, a writer atomically increases the version • Readers only have to read the version • At the begin of its critical section, a reader atomically reads the current version • At the end of its critical section, a reader validates that the version did not change • Otherwise, a concurrent write occurred and the critical section is restarted writer(optLock) { lockExclusive(optLock.mutex) // begin critical section // modify the shared resource storeAtomic(optLock.version, optLock.version + 1) unlockExclusive(optLock.mutex) // end critical section } reader(optLock) { while(true) { current = loadAtomic(optLock.version); // begin critical section // read the shared resource if (current == loadAtomic(optLock.version)) // validate return; // end critical section } } 读者只需要两个原子load，比共享锁便宜 但是注意，共享资源在我们访问时可能被修改，不能做出consistent state的假设 更复杂的读操作需要更多中间检查 non-blocking 不依赖锁的，使用原子操作 一般是lock-free的同义词，表示至少能有一个线程能make progress lost update和A-B-A问题 CAS没有公平性，不保证某个线程最终能获得锁.</description>
-    <pubDate>Mon, 27 Jan 2025 09:45:25 GMT</pubDate>
+    <description><![CDATA[ gpg抑制在gui中输入密码 Using Command-Line Passphrase Input for GPG with Git (for Windows) | by beta | Medium 在这个目录下创建 gpg.conf 和 gpg-agent.conf： C:\Users&lt;user&gt;\AppData\Roaming\gnupg\ 两个文件都应该包含这一行： pinentry-mode loopback CS231n Convolutional Neural Networks for Visual Recognition 线性回归 f(xi,W,b)=Wxi+b 几... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item><item>
     <title>2025-01-23</title>
     <link>https://swingurm.github.io/quartz/Daily/2025-01-23</link>
     <guid>https://swingurm.github.io/quartz/Daily/2025-01-23</guid>
-    <description>基本数据类型 算术类型，void 为了支持分离式编译，C++语言将声明和定义区分开来。声明（declaration）使得名字为程序所知，一个文件如果想使用别处定义的名字则必须包含对那个名字的声明。而定义（definition）负责创建与名字关联的实体。 变量声明规定了变量的类型和名字，在这一点上定义与之相同。但是除此之外，定义还申请存储空间，也可能会为变量赋一个初始值。 ...</description>
-    <pubDate>Thu, 23 Jan 2025 07:21:58 GMT</pubDate>
+    <description><![CDATA[ 基本数据类型 算术类型，void 为了支持分离式编译，C++语言将声明和定义区分开来。声明（declaration）使得名字为程序所知，一个文件如果想使用别处定义的名字则必须包含对那个名字的声明。而定义（definition）负责创建与名字关联的实体。 变量声明规定了变量的类型和名字，在这一点上定义与之相同。但是除此之外，定义还申请存储空间，也可能会为变量赋一个初始值。 变量声明 extern int i; //声明 int j; //声明并定义 extern double pi = 3.14; //定义 如前所述，变量的定义包括一个基本数据类型（base type）和一组声明符。在同一条定义... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
   </item>
     </channel>
   </rss>
