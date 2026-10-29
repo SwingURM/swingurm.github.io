@@ -2,69 +2,69 @@
 <rss version="2.0">
     <channel>
       <title>🐧 Blog</title>
-      <link>https://swingurm.github.io/quartz</link>
-      <description>最近的10条笔记 on 🐧 Blog</description>
+      <link>https://swingurm.github.io</link>
+      <description>Last 10 notes on 🐧 Blog</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>2025-11-01</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-11-01</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-11-01</guid>
-    <description><![CDATA[ 操作系统只能通过虚拟地址访问页表来修改页表 如何设置页表的虚拟地址 对于虚拟地址管够的64位系统，将高虚拟地址空间全部保留给内核，物理地址通过加上一个偏移量转为虚拟地址。 为了找到某级页表的虚拟地址，只需顺着多级页表访问直到得到其物理地址，然后转为虚拟地址即可访问。 2.recursive paging Advanced Paging | Writing an OS in Rust 以一个具有四层页表结构的地址转换方式为例 其中SSSSSS的设置与x86要求有关，可忽略 虚拟地址地址结构（八进制）页0o_SSSSSS_AAA_BBB_CCC_DDD_EEEE一级表项0o_SSSSSS_RRR_... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>Daily</title>
+    <link>https://swingurm.github.io/daily/</link>
+    <guid>https://swingurm.github.io/daily/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-04-06</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-04-06</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-04-06</guid>
-    <description><![CDATA[ 寄存器分调用者保存和被调用者保存，可以根据变量生命周期分配到不同寄存器，减少保存变量开销 页表寄存器和页表中的所有地址 都是物理地址 TLB 能记录的映射条数有限 操作系统会编辑页表。为了保证与页表的一致性，tlb提供了flush接口，也就是将tlb设置为无效。这样做效率很低，ASID… 大页 占用tlb条数少，查页表所需的访存次数少 segmentation fault 以访问0地址为例，cpu会触发缺页异常，操作系统检查后发现访问了非法虚拟地址，即抛出segfault 延迟分配 demand paging 懒惰填写页表，因此需要额外记录真实虚拟空间，这是比实际页表映射更完整的 进程初始化时... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>aigc</title>
+    <link>https://swingurm.github.io/aigc/</link>
+    <guid>https://swingurm.github.io/aigc/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-05-22</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-05-22</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-05-22</guid>
-    <description><![CDATA[ 谁创建了/dev/下的对象 udev 谁执行了mount udisk2 块设备容易导致读/写放大 为了让文件系统感知“块”的概念，引入bio这一中间层管理读写请求 overlayfs虚拟的目录 文件系统级api exit那些事 tldr:exit库函数高级封装了_exit()wrapper函数，_exit()wrap了exit_group。要使用exit系统调用可以syscall sys_exit。 准确来说似乎c语言exit包装的系统调用名为exit_group，这个系统调用据说唤醒（SIG_KILL）并杀死所有组内的线程 _exit是exit_group的包装 man_exit(2) By... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>cpp_folder</title>
+    <link>https://swingurm.github.io/cpp_folder/</link>
+    <guid>https://swingurm.github.io/cpp_folder/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-04-13</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-04-13</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-04-13</guid>
-    <description><![CDATA[ CUDA 编程模型 线程→块→网格 网格如何划分为块 dim3 dimGrid(x,y,z); 定义了一个z纵y行x列的网格，即x,y,z是从“变化最快的”维度开始的，对比等价C语言写法应该是mat[z][y][x] 想想C语言中复合类型是怎么阅读的-由内而外。 //大小为10的数组，它的每个元素都是大小为20的数组 //这些数组的元素是含有30个整数的数组 int arr[10][20][30] = {0}；//将所有元素初始化为0 因此，对于二维情况 row = blockIdx.y * blockDim.y + threadIdx.y // vertical cord col = blo... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>数据库</title>
+    <link>https://swingurm.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <guid>https://swingurm.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-04-02</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-04-02</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-04-02</guid>
-    <description><![CDATA[ 编译链接观察 数据 #include &lt;unistd.h&gt; int a = 0; // Case 1 // extern int a; //Case 2 int main() { int x = a; return 0; } x86似乎不允许一条mov的源和目的都是内存地址 Case 1 mov 0x0(%rip),%eax //加载 a 到 %eax mov %eax,-0x4(%rbp) //读取 a 到 x Case 2 mov 0x0(%rip),%rax // 加载 optind 的地址到 %rax mov (%rax),%eax // 读取 optind 的值到 %ea... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>算法</title>
+    <link>https://swingurm.github.io/tags/%E7%AE%97%E6%B3%95</link>
+    <guid>https://swingurm.github.io/tags/%E7%AE%97%E6%B3%95</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-03-20</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-03-20</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-03-20</guid>
-    <description><![CDATA[ SOP风格教程 SOP（Standard Operating Procedure）即标准操作流程，意味着将复杂任务拆解为明确的步骤 硬件视角的计算机 C视角下程序内部的状态：全局变量，stack frame们（注意每个栈帧有自己的pc） 状态迁移：执行指令，响应中断，输入输出 执行指令（纯计算的）可以改变程序内部的状态，发出系统调用（中断）才能改变外部的状态 有用的prompt 我现在在[]，如果你是一个专业人士，你有什么更好的方法和建议吗，尽可能全面 BIOS basic i/o system 启动后常驻系统，提供输入输出服务 严格来说是firmware（cpu reset后执行的第一个软件... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>example-tag</title>
+    <link>https://swingurm.github.io/tags/example-tag</link>
+    <guid>https://swingurm.github.io/tags/example-tag</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-03-08</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-03-08</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-03-08</guid>
-    <description><![CDATA[ 微软魅力时刻 正在重定向 正在重定向 数据的机器级表述 位运算就是我们接触的最早的“simd” 每个bit就是一个data 整数也可视作一个bitset，进而引出问题：如何进行集合操作（如成员归属判断，交集等） 遍历集合元素可以借助lowbit实现 一种高效的求二进制中有多少1的实现 这里是求|S| int bitset_size1(uint32_t S) { // SIMD S = (S &amp; 0x55555555) + ((S &gt;&gt; 1) &amp; 0x55555555); S = (S &amp; 0x33333333) + ((S &gt;&gt; 2) &amp;... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>c</title>
+    <link>https://swingurm.github.io/tags/c</link>
+    <guid>https://swingurm.github.io/tags/c</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-02-27</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-02-27</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-02-27</guid>
-    <description><![CDATA[ cppnow_presentations_2023/cppnow_slides/Under_the_Hood.pdf at main · boostcon/cppnow_presentations_2023 · GitHub vdso amd和intel使用了不同的指令来优化系统调用（int 80?） 为了统一，在linux上使用vdso这个中间层 此外，vdso能优化那些看上去没必要陷入内核的调用，如时间 auxv 在linux的进程初始化之后的栈上，在env之后还有一系列变量 调用约定 caller-stored 调用者caller保存，在函数调用之前由caller入栈保存 可以被call... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>python</title>
+    <link>https://swingurm.github.io/tags/python</link>
+    <guid>https://swingurm.github.io/tags/python</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-02-07</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-02-07</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-02-07</guid>
-    <description><![CDATA[ gpg抑制在gui中输入密码 Using Command-Line Passphrase Input for GPG with Git (for Windows) | by beta | Medium 在这个目录下创建 gpg.conf 和 gpg-agent.conf： C:\Users&lt;user&gt;\AppData\Roaming\gnupg\ 两个文件都应该包含这一行： pinentry-mode loopback CS231n Convolutional Neural Networks for Visual Recognition 线性回归 f(xi,W,b)=Wxi+b 几... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>os</title>
+    <link>https://swingurm.github.io/tags/os</link>
+    <guid>https://swingurm.github.io/tags/os</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item><item>
-    <title>2025-01-23</title>
-    <link>https://swingurm.github.io/quartz/Daily/2025-01-23</link>
-    <guid>https://swingurm.github.io/quartz/Daily/2025-01-23</guid>
-    <description><![CDATA[ 基本数据类型 算术类型，void 为了支持分离式编译，C++语言将声明和定义区分开来。声明（declaration）使得名字为程序所知，一个文件如果想使用别处定义的名字则必须包含对那个名字的声明。而定义（definition）负责创建与名字关联的实体。 变量声明规定了变量的类型和名字，在这一点上定义与之相同。但是除此之外，定义还申请存储空间，也可能会为变量赋一个初始值。 变量声明 extern int i; //声明 int j; //声明并定义 extern double pi = 3.14; //定义 如前所述，变量的定义包括一个基本数据类型（base type）和一组声明符。在同一条定义... ]]></description>
-    <pubDate>Tue, 09 Dec 2025 04:19:35 GMT</pubDate>
+    <title>学习</title>
+    <link>https://swingurm.github.io/tags/%E5%AD%A6%E4%B9%A0</link>
+    <guid>https://swingurm.github.io/tags/%E5%AD%A6%E4%B9%A0</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Thu, 29 Oct 2026 03:04:54 GMT</pubDate>
   </item>
     </channel>
   </rss>
